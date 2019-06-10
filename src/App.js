@@ -71,7 +71,7 @@ export default class App extends Component {
         window.location.reload();
       }
     } catch(e) {
-      console.error(e);
+      console.log(e);
     }
   }
 
@@ -87,7 +87,7 @@ export default class App extends Component {
         isLoading: false
       }, this.updateState);
     } catch(e) {
-      console.error(e);
+      console.log(e);
     }
   }
 
@@ -140,7 +140,7 @@ export default class App extends Component {
       });
       this.updateState(roomData.schedule);
     } catch(e) {
-      console.error(e);
+      console.log(e);
       this.fetchSchedule();
     }
   }
@@ -159,7 +159,7 @@ export default class App extends Component {
       if (roomReq.status !== 200) throw new Error('API Unavailable');
       const roomData = await roomReq.json();
     } catch(e) {
-      console.error(e);
+      console.log(e);
       this.fetchSchedule();
     }
   }

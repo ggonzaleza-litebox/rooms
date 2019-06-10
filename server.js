@@ -30,7 +30,7 @@ if( isProduction ) {
 
 app.listen(port, (err) => {
   if (err) {
-    console.error("Error starting server:\n", err.stack)
+    console.log("Error starting server:\n", err.stack)
     process.exit(1)
   }
   console.log('API available at port '+ port);

@@ -56,7 +56,7 @@ const quickBook = async (req, res, next) => {
       schedule: unifySchedule(schedule)
     });
   } catch(e) {
-    console.error(e);
+    console.log(e);
     res.status(500).json({ error: 'API Not Available. Couldn\'t book event.' })
     return
   }
@@ -90,7 +90,7 @@ const removeBooking = async (req, res, next) => {
       schedule: unifySchedule(newSchedule)
     });
   } catch(e) {
-    console.error(e);
+    console.log(e);
     res.status(500).json({ error: 'API Not Available. Couldn\'t remove event.' })
     return
   }
