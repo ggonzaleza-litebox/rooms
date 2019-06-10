@@ -2,8 +2,8 @@ const google = require('googleapis')
 const moment = require('moment-timezone')
 const shared = require('./shared')
 
-const rooms = require('./rooms.json')
-const key = require('./rooms-client.json')
+const rooms = require('../rooms.json')
+const key = require('../rooms-client.json')
 
 const timezone = shared.timezone
 const getFreeSlots = shared.getFreeSlots

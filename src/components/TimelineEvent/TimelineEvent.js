@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-
+import 'particles.js'
 import './TimelineEvent.css'
+
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,6 +26,9 @@ export default class TimelineEvent extends Component {
       </div>
       )
     }
+
+    particlesJS.load('particles-js','https://s3.us-east-2.amazonaws.com/litebox-website/data/full-header-particles.json');
+
 
     const startDate = event ? moment(event.start) : null;
     const endDate = event ? moment(event.end) : null;
@@ -58,25 +62,27 @@ export default class TimelineEvent extends Component {
     }
 
     return (
-      <div className="TimelineEvent">
-        {isNext ?
-          now.isSame(startDate, 'day') ?
-            <div className="subtitle">Próxima reunión de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
-            :
-            now.clone().add(1, 'day').isSame(startDate, 'day') ?
-              <div className="subtitle">Próxima reunión mañana de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
+      <div id="particles">
+        <div className="TimelineEvent">
+          {isNext ?
+            now.isSame(startDate, 'day') ?
+              <div className="subtitle">Próxima reunión de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
               :
-              <div className="subtitle">Próxima reunión el {startDate.format('dddd')} de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
-          :
-          now.isSame(endDate, 'day') ?
-            <div className="subtitle">Última reunión de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
+              now.clone().add(1, 'day').isSame(startDate, 'day') ?
+                <div className="subtitle">Próxima reunión mañana de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
+                :
+                <div className="subtitle">Próxima reunión el {startDate.format('dddd')} de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
             :
-            now.clone().add(-1, 'day').isSame(startDate, 'day') ?
-              <div className="subtitle">Última reunión ayer de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
+            now.isSame(endDate, 'day') ?
+              <div className="subtitle">Última reunión de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
               :
-              <div className="subtitle">A long time ago in a galaxy far, far away...</div>
-        }
-        <div className="title">{event.summary}</div>
+              now.clone().add(-1, 'day').isSame(startDate, 'day') ?
+                <div className="subtitle">Última reunión ayer de {startDate.format('HH:mm')} a {endDate.format('HH:mm')}hs</div>
+                :
+                <div className="subtitle">A long time ago in a galaxy far, far away...</div>
+          }
+          <div className="title">{event.summary}</div>
+        </div>
       </div>
     )
   }
